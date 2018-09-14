@@ -1,0 +1,15 @@
+#resource: http://htaccesscheatsheet.com/#custom-error-pages
+#resource: http://stackoverflow.com/questions/39459256/how-to-configure-htaccess-file-if-main-controller-resides-in-public-folder/39459401?noredirect=1#comment66304441_39459401
+
+DirectoryIndex index.php
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^index\.php$ - [L,NC]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule .* index.php?url=$0 [QSA,L]
